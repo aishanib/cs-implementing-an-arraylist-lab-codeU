@@ -56,7 +56,7 @@ public class MyArrayListTest {
 		for (int i = 4; i < 20; i++) {
 			mal.add(i);
 		}
-		//System.out.println(Arrays.toString(mal.toArray()));
+		//System.out.println("On Addition (4-20)"+Arrays.toString(mal.toArray()));
 		assertThat(mal.get(18), is(new Integer(19)));
 	}
 
@@ -66,7 +66,7 @@ public class MyArrayListTest {
 	@Test
 	public void testAddIntT() {
 		mal.add(1, 5);
-		//System.out.println(Arrays.toString(mal.toArray()));
+		//System.out.println("Add 5 to position 1 "+Arrays.toString(mal.toArray()));
 		assertThat(mal.get(1), is(new Integer(5)));
 		assertThat(mal.size(), is(4));
 		
@@ -81,11 +81,11 @@ public class MyArrayListTest {
 		} catch (IndexOutOfBoundsException e) {} // good
 		
 		mal.add(0, 6);
-		//System.out.println(Arrays.toString(mal.toArray()));
+		//System.out.println("Adding 6 at 0 "+Arrays.toString(mal.toArray()));
 		assertThat(mal.get(0), is(6));
 
 		mal.add(5, 7);
-		//System.out.println(Arrays.toString(mal.toArray()));
+		//System.out.println("Adding 7 at 5 "+Arrays.toString(mal.toArray()));
 		assertThat(mal.get(5), is(new Integer(7)));
 	}
 
@@ -117,8 +117,10 @@ public class MyArrayListTest {
 	public void testContains() {
 		assertThat(mal.contains(1), equalTo(true));
 		assertThat(mal.contains(4), equalTo(false));
+		//System.out.println("Currently: "+Arrays.toString(mal.toArray()));
 		assertThat(mal.contains(null), equalTo(false));
 		mal.add(null);
+		//System.out.println("Currently: "+Arrays.toString(mal.toArray()));
 		assertThat(mal.contains(null), equalTo(true));
 	}
 
@@ -185,24 +187,26 @@ public class MyArrayListTest {
 	 */
 	@Test
 	public void testRemoveObject() {
+		//System.out.println("Before Removal: "+Arrays.toString(mal.toArray()));
 		boolean flag = mal.remove(new Integer(2));
+		//System.out.println("After Removal: "+Arrays.toString(mal.toArray()));
 		assertThat(flag, equalTo(true));
 		assertThat(mal.size(), is(2));
 		assertThat(mal.get(1), is(new Integer(3)));
 		//System.out.println(Arrays.toString(mal.toArray()));
-
+		//System.out.println("Before Removal: "+Arrays.toString(mal.toArray()));
 		flag = mal.remove(new Integer(1));
+		//System.out.println("After Removal: "+Arrays.toString(mal.toArray()));
 		assertThat(flag, equalTo(true));
 		assertThat(mal.size(), is(1));
 		assertThat(mal.get(0), is(new Integer(3)));
 		//System.out.println(Arrays.toString(mal.toArray()));
-		
+		//System.out.println("Before Removal: "+Arrays.toString(mal.toArray()));
 		flag = mal.remove(new Integer(5));
+		//System.out.println("After Removal: "+Arrays.toString(mal.toArray()));
 		assertThat(flag, equalTo(false));
 		assertThat(mal.size(), is(1));
 		assertThat(mal.get(0), is(new Integer(3)));
-		//System.out.println(Arrays.toString(mal.toArray()));
-		
 		flag = mal.remove(new Integer(3));
 		assertThat(flag, equalTo(true));
 		assertThat(mal.size(), is(0));
